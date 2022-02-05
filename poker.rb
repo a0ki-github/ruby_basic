@@ -49,7 +49,7 @@ class Hand
     end
 
     def straight?
-      numbers.max - numbers.min == 4
+      numbers.max - numbers.min == 4 || numbers.sort == [1, 10, 11, 12, 13]
     end
 
     def flash?
