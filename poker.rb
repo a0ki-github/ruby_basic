@@ -33,11 +33,11 @@ class Hand
   private
 
     def royal_straight_flash?
-      all_same_suits? && numbers.sort == [1, 10, 11, 12, 13]
+      flash? && numbers.sort == [1, 10, 11, 12, 13]
     end
 
     def straight_flash?
-      all_same_suits? && serial_numbers?
+      straight? && flash?
     end
 
     def four_card?
@@ -49,11 +49,11 @@ class Hand
     end
 
     def straight?
-      serial_numbers?
+      numbers.max - numbers.min == 4
     end
 
     def flash?
-      all_same_suits?
+      suits_configuration == [5]
     end
 
     def three_card?
@@ -66,14 +66,6 @@ class Hand
 
     def one_pair?
       numbers_configuration == [2, 1, 1, 1]
-    end
-
-    def all_same_suits?
-      suits_configuration == [5]
-    end
-
-    def serial_numbers?
-      numbers.max - numbers.min == 4
     end
 
     def suits_configuration
