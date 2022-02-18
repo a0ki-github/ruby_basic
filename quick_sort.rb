@@ -3,8 +3,8 @@ class Array
     return self if self.count <= 1
 
     std = self.shift
-    smaller = self.select{|n| std > n}
-    bigger = self.select{|n| n > std}
+    smaller = self.select{|n| n < std}
+    bigger = self.select{|n| n >= std}
 
     return smaller.quick_sort + [std] + bigger.quick_sort
   end
